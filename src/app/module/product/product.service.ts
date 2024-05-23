@@ -10,12 +10,12 @@ const getAllProductFromDB = async () => {
   const result = await Product.find()
   return result
 }
-const getProductByIDFromDB = async (id: string) => {
-  const result = await Product.findById(id)
+const getProductByIDFromDB = async (productId: string) => {
+  const result = await Product.findById(productId)
   return result
 }
-const updateProductByID = async (id: string,product: TProduct) => {
-  const result = await Product.findByIdAndUpdate(id,product)
+const updateProductByID = async (productId: string,product: TProduct) => {
+  const result = await Product.findByIdAndUpdate(productId,product,{new: true})
   return result
 }
 

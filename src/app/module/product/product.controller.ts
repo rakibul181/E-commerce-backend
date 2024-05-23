@@ -42,8 +42,8 @@ const getAllProduct = async (req: Request, res: Response) => {
 
 const getProductByID = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params
-    const result = await productService.getProductByIDFromDB(id)
+    const { productId } = req.params
+    const result = await productService.getProductByIDFromDB(productId)
     res.status(200).json({
       success: true,
       message: "Products fetched successfully!",
@@ -60,10 +60,10 @@ const getProductByID = async (req: Request, res: Response) => {
 const updateProduct = async(req:Request,res:Response)=>{
 
   try{
-    const { id } = req.params
+    const { productId } = req.params
     const product = await req.body
     const zodParse = productValidationSchema.parse(product)
-    const result = await productService.updateProductByID(id,zodParse)
+    const result = await productService.updateProductByID(productId,zodParse)
     res.status(200).json({
       success: true,
       message: "Product updated successfully!",
