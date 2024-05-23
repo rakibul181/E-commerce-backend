@@ -13,10 +13,9 @@ const createProduct = async (req: Request, res: Response) => {
       data: result,
     })
   } catch (error) {
-    console.log("Error: ", error)
-    res.status(500).json({
+     res.status(500).json({
       success: false,
-      message: "An error occurred.",
+      message: error,
       error,
     })
   }
@@ -31,8 +30,7 @@ const getAllProduct = async (req: Request, res: Response) => {
       data: result,
     })
   } catch (error) {
-    console.log("Error: ", error)
-    res.status(500).json({
+     res.status(500).json({
       success: false,
       message: "An error occurred.",
       error,
