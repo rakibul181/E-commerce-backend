@@ -26,9 +26,9 @@ const getAllProduct = async (req: Request, res: Response) => {
   try {
     const result = await productService.getAllProductFromDB()
     res.status(200).json({
-      "success": true,
-    "message": "Products fetched successfully!",
-    "data":result
+      success: true,
+      message: "Products fetched successfully!",
+      data: result,
     })
   } catch (error) {
     console.log("Error: ", error)
@@ -40,28 +40,50 @@ const getAllProduct = async (req: Request, res: Response) => {
   }
 }
 
-const getProductByID = async(req:Request,res:Response)=>{
+const getProductByID = async (req: Request, res: Response) => {
   try {
-    const {id} = req.params
-    const result = await productService.getProductByIDFromDB(id) 
+    const { id } = req.params
+    const result = await productService.getProductByIDFromDB(id)
     res.status(200).json({
-      "success": true,
-    "message": "Products fetched successfully!",
-    "data":result
+      success: true,
+      message: "Products fetched successfully!",
+      data: result,
     })
-
   } catch (error) {
     res.status(400).json({
-      
-        success: false,
-        message: "Product not found"
+      success: false,
+      message: "Product not found",
     })
-    
   }
+}
+
+const updateProduct = async(req:Request,res:Response)=>{
+
+  try{
+    const { id } = req.params
+    const product = await req.body
+    const zodParse = productValidationSchema.parse(product)
+    const result = await productService.updateProductByID(id,zodParse)
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully!",
+      data: result,
+    })
+
+  }
+
+  catch(error){
+    res.status(400).json({
+      success: false,
+      message: "Product not found",
+    })
+  }
+
 }
 
 export const productControl = {
   createProduct,
   getAllProduct,
-  getProductByID
+  getProductByID,
+  updateProduct
 }

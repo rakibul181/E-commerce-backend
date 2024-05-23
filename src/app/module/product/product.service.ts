@@ -6,18 +6,22 @@ const createProductIntoDB = async (product: TProduct) => {
   return result
 }
 
-const getAllProductFromDB = async()=>{
+const getAllProductFromDB = async () => {
   const result = await Product.find()
-  return result 
+  return result
 }
-const getProductByIDFromDB = async(id:string)=>{
+const getProductByIDFromDB = async (id: string) => {
   const result = await Product.findById(id)
-  return result 
+  return result
+}
+const updateProductByID = async (id: string,product: TProduct) => {
+  const result = await Product.findByIdAndUpdate(id,product)
+  return result
 }
 
 export const productService = {
   createProductIntoDB,
   getAllProductFromDB,
-  getProductByIDFromDB
+  getProductByIDFromDB,
+  updateProductByID,
 }
-
