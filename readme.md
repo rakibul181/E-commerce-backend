@@ -21,9 +21,6 @@ This project is an E-commerce backend service developed using Node.js, Express, 
 - **TypeScript:** A statically typed superset of JavaScript.
 - **Zod:** A TypeScript-first schema declaration and validation library.
 
- 
-
- 
 ## Installation
 
 1. Clone the repository
@@ -36,12 +33,28 @@ This project is an E-commerce backend service developed using Node.js, Express, 
 
 2. Install dependencies
 
-   ````sh
+   ```sh
    npm install
 
-   ```sh
-   yarn install
-   ````
 
- 
- 
+   yarn install
+
+   ```
+
+3. Environment Variables:
+   Create a `.env` file in the root directory and add the following environment variables
+
+```sh
+ MONGO_URI=your_mongodb_connection_string
+ PORT=5000
+
+
+```
+
+4.Run the Server
+
+```sh
+npm run start:dev
+
+
+```

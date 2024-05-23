@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express"
 import { ProductRoutes } from "./app/module/product/product.route"
 import cors from "cors"
 import {  OrderRoutes } from "./app/module/order/order.route"
+import { notFoundMiddleware } from "./app/utility"
 const app: Application = express()
 
 app.use(cors())
@@ -15,5 +16,7 @@ app.get("/", (req: Request, res: Response) => {
     status: "Ok",
   })
 })
+
+app.use(notFoundMiddleware)
 
 export default app
